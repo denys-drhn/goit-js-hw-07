@@ -39,14 +39,28 @@ function onGalleryContainerClick(event) {
 	// console.log(event.target.nodeName);
 	if (event.target.nodeName !== "IMG") {
     return;
-	}
+	};
+
 	const selectedImg = event.target.dataset.source; // получение url большого изображения
 
-	// 3. Подключение скрипта и стилей библиотеки модального окна basicLightbox:
-	const instance = basicLightbox.create(`
-	<img src="${selectedImg}" width="800" height="600">
-`)
+	// 3. Замена значения атрибута src элемента <img> в модальном окне перед открытием
+	// Подключение скрипта и стилей библиотеки модального окна basicLightbox:
+	const instance = basicLightbox.create(`<img src="${selectedImg}" width="800" height="600">`)
+
 	instance.show();
+
+	// * Закрытие с клавиатуры:
+
+	window.addEventListener('keydown', onEscKeyPress);
+	function onEscKeyPress(event) {
+	// console.log(event.code);
+	if (event.code === 'Escape') {
+		instance.close();
+	}
+}
 };
 
-// * Закрытие с клавиатуры:
+
+
+
+
