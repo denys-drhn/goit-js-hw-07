@@ -57,7 +57,7 @@ function onGalleryContainerClick(event) {
 	
 	// * Закрытие с клавиатуры:
 	function onEscKeyPress(event) {
-		console.log(event.code);
+		// console.log(event.code);
 		
 		if (event.code === 'Escape') {
 			instance.close();
